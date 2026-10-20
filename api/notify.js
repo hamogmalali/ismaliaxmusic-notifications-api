@@ -91,8 +91,8 @@ module.exports = async (req, res) => {
   const message = {
     topic: 'all',
     notification: {
-      title: String(title),
-      body: articleBody ? truncate(String(articleBody), 120) : 'مقال جديد!',
+      title: 'اسماعيليه اكس ميوزك',
+      body: title ? 'أغنية جديدة على تطبيقنا: ' + String(title) : 'أغنية جديدة على تطبيقنا',
     },
     data: {
       articleId: articleId ? String(articleId) : '',
