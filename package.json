@@ -1,0 +1,12 @@
+{
+  "name": "ismaliaxmusic-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vercel serverless function لإرسال إشعارات FCM عند نزول مقال جديد",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "firebase-admin": "^14.5.0"
+  }
+}

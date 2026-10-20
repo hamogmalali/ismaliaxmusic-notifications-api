@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Vercel
+.vercel/
+
+# مفتاح service account الحساس — ما ترفعهوش على Git
+serviceAccount*.json
+*.service-account.json
+
+# Logs
+*.log
+npm-debug.log*
