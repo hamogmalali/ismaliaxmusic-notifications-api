@@ -91,18 +91,22 @@ module.exports = async (req, res) => {
   const message = {
     topic: 'all',
     notification: {
-      title: 'اسماعيليه اكس ميوزك',
-      body: title ? 'أغنية جديدة على تطبيقنا: ' + String(title) : 'أغنية جديدة على تطبيقنا',
+      title: 'أغنية جديدة 🎵',
+      body: 'أغنية جديدة على تطبيقنا: ' + String(title),
     },
     data: {
       articleId: articleId ? String(articleId) : '',
       type: 'new_article',
+      title: String(title),
     },
     android: {
       priority: 'high',
       notification: {
         channelId: 'new_articles',
         sound: 'default',
+        priority: 'max',
+        defaultVibrateTimings: true,
+        notificationCount: 1,
       },
     },
     apns: {
