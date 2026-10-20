@@ -2,7 +2,8 @@
 // يبعث إشعار FCM لكل المستخدمين (topic 'all') عند نزول مقال جديد
 // يشتغل على Vercel free tier (Hobby)
 
-const admin = require('firebase-admin');
+const adminRaw = require('firebase-admin');
+const admin = adminRaw.default || adminRaw;
 
 // ─── تهيئة Admin SDK مرة واحدة بس ──────────────────────────
 // (نحافظ على الـ singleton عشان ما نعيدش التهيئة في كل cold/warm call)
@@ -120,6 +121,7 @@ module.exports = async (req, res) => {
       error: 'Failed to send notification',
       detail: err && err.message ? err.message : String(err),
       stack: err && err.stack ? String(err.stack) : 'no-stack',
+      adminDebug: { typeofAdmin: typeof admin, hasDefault: !!adminRaw.default, keys: admin ? Object.keys(admin).slice(0,15) : null, appsType: admin ? typeof admin.apps : null, appsLength: admin && admin.apps ? admin.apps.length : 'undef' },
     });
   }
 };
