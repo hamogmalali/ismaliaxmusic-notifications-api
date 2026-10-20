@@ -115,9 +115,11 @@ module.exports = async (req, res) => {
     return res.status(200).json({ ok: true, messageId });
   } catch (err) {
     console.error('notify error:', err && err.message);
+    console.error('notify stack:', err && err.stack);
     return res.status(500).json({
       error: 'Failed to send notification',
       detail: err && err.message ? err.message : String(err),
+      stack: err && err.stack ? String(err.stack) : 'no-stack',
     });
   }
 };
