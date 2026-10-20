@@ -29,7 +29,7 @@ function getMessaging() {
   // نتأكد إن ما فيش app متهيأ قبل كده
   if ((admin.getApps ? admin.getApps() : (admin.apps || [])).length === 0) {
     admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
+      credential: (admin.cert || admin.credential.cert)(serviceAccount),
       // databaseURL اختياري — مش محتاجين Realtime DB هنا
     });
   }
