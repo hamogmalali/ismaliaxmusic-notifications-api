@@ -4,6 +4,7 @@
 
 const adminRaw = require('firebase-admin');
 const admin = adminRaw.default || adminRaw;
+const { getMessaging: getMessagingFn } = require('firebase-admin/messaging');
 
 // ─── تهيئة Admin SDK مرة واحدة بس ──────────────────────────
 // (نحافظ على الـ singleton عشان ما نعيدش التهيئة في كل cold/warm call)
@@ -37,7 +38,7 @@ function getMessaging() {
     app = (admin.getApps ? admin.getApps() : admin.apps)[0];
   }
 
-  _messaging = app.messaging();
+  _messaging = getMessagingFn(app);
   return _messaging;
 }
 
